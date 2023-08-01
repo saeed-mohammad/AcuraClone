@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,ScrollView } from 'react-native'
+import { StyleSheet, Text, View,ScrollView ,StatusBar} from 'react-native'
 import React from 'react'
 import Header from '../components/header/Header'
 import Main from '../components/main/Main'
@@ -7,6 +7,7 @@ import Main from '../components/main/Main'
 const Home = () => {
   return (
     <View style={styles.container}>
+      {/* <StatusBar  backgroundColor="#fff"/> */}
       <ScrollView showsVerticalScrollIndicator={false}>
             <Header/>
             <Main/>

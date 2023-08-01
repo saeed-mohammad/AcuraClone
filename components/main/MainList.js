@@ -6,10 +6,6 @@ import { useNavigation } from '@react-navigation/native';
     * ! work on description2 in id 4
     * ! icon and icon name not aligning
     * 
-    * ! ( VirtualizedLists should never be nested inside plain ScrollViews 
-    * ! with the same orientation because it can break windowing and other functionality - use another VirtualizedList-backed container instead. )
-    * ! (Warning: Each child in a list should have a unique "key" prop.)
-    * ? for virtulization use map and pass the data throughout the props
     */
    
    
@@ -41,22 +37,15 @@ import { useNavigation } from '@react-navigation/native';
   
 const MainList = () => {
     const navigation = useNavigation();
-    const handleButton=(item)=>{
-        if(item.id ==1){
-            navigation.navigate(item.nav)
-         }else{
-             console.log(item.id)
-         }
-     }
 
   return (
     <View style={styles.container}>  
         {
             data.map((item,_)=>
             <TouchableOpacity
-             key={item.id}
-            onPress={()=>handleButton(item)}>
-                    <Item item={item}/>
+            key={item.id}
+            onPress={()=> navigation.navigate(item.nav)}>
+                <Item item={item}/>
             </TouchableOpacity>    
             )
         }
