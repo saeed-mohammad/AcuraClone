@@ -10,6 +10,7 @@ export const data=[
         nav:'Country',
         title:'ACCURA OCR',
         description:'Recognizes Passport & ID MRZ.Pn & Aadhaar Cards India.Works Offline',
+        backgroundColor:'red',
         icons:[
             {
                 name:scan,
@@ -32,6 +33,7 @@ export const data=[
         nav:'ACCURA FACE MATCH',
         title:'ACCURA FACE MATCH',
         description:'AI & ML Based Powerful Face Detection & Recognition Solution 1:1 and 1:N. Works Offline',
+        backgroundColor:'grey',
         icons:[
             {
                 name:scan,
@@ -54,6 +56,7 @@ export const data=[
         nav:'FINGER PRINT MATCH',
         title:'FINGER PRINT MATCH',
         description:'Robust finger detection and recognition solution.Works offline',
+        backgroundColor:'red',
         icons:[
             {
                 name:scan,
@@ -77,6 +80,7 @@ export const data=[
         title:'ACCURA AUTHENTICATION',
         description:'eKYC and Customer On-Boarding with Liveness Detection & Face Biometrics for Remote,Realtime User Authentication.',
         description2:'Realtime User Authentication.',
+        backgroundColor:'grey',
         icons:[
             {
                 name:scan,

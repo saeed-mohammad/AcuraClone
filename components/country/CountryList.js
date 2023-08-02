@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from '@react-navigation/native';
-
+import filter from 'lodash.filter';
 
 // component for flatlist
 const Item=({item})=>{
@@ -18,10 +18,15 @@ const Item=({item})=>{
 const CountryList = () => {
   const navigation=useNavigation();
   const [searchInp,setSearchInp]=useState('');
+  const [Data,setData]=useState(countryName)
 
   // button event
 const handleCountry=(item)=>{
-  console.log(item.name)
+  console.log(item)
+  navigation.navigate('IdCards', {
+    name: item.name,
+  })
+  // console.log('list select0',item.name)
 }
 const handleBtn=(e)=>{
   if(e=='back'){
@@ -30,13 +35,20 @@ const handleBtn=(e)=>{
     setSearchInp('')
   }
 }
-  if(searchInp){
-    let temp=countryName.filter(item=>{
-      // console.log(searchInp.includes(item.name))
-        return item.name.toLowerCase().includes(searchInp)
+const handleSearch=(query)=>{
+  setSearchInp(query)
+  if(searchInp !== ''){
+    const formattedQuery=query.toLowerCase();
+    const filterData=filter(countryName,(country)=>{
+      if(country.name.toLowerCase().includes(formattedQuery)){
+        return true
+      }
+      return false
     })
-    console.log(temp)
+    setData(filterData)
   }
+}
+// console.log(searchInp)
   return (
       <View style={styles.container}>
         <View style={styles.searchContainer}>
@@ -51,9 +63,11 @@ const handleBtn=(e)=>{
                 <Feather style={styles.icn_search} name="search" size={22} color="black" />
                 <TextInput 
                 style={styles.searchInput} 
-                onChangeText={(val)=>setSearchInp(val)}
+                onChangeText={(query)=>handleSearch(query)}
                 value={searchInp} 
-                placeholder='Search Here'/>
+                placeholder='Search Here'
+                // clearButtonMode='always' not working
+                />
 
                 {
                 (searchInp) &&
@@ -65,7 +79,7 @@ const handleBtn=(e)=>{
               </View>
         </View>
         <FlatList
-        data={countryName}
+        data={Data}
         showsVerticalScrollIndicator={false}
         keyExtractor={item=>item.name}
         renderItem={({item})=> 

@@ -11,7 +11,7 @@ import { useNavigation } from '@react-navigation/native';
    
    const Item=({item})=>{
     return(
-            <View style={styles.content}>
+            <View style={[styles.content,{backgroundColor:item.backgroundColor}]}>
             <Text style={styles.heading}>{item.title}</Text>
             <Text style={styles.title}>{item.description}</Text>
             <View style={styles.iconContainer}>
@@ -26,7 +26,7 @@ import { useNavigation } from '@react-navigation/native';
                 item.icons.map((v, i) => (
                 <>
                     <Text style={styles.Name}>{v.title}</Text>
-                    <Text style={styles.Name}>{v.special}</Text>
+                    {/* <Text style={[styles.Name,styles.special]}>{v.special}</Text> */}
                 </>
                 ))
             }
@@ -53,8 +53,9 @@ const MainList = () => {
   )
 }
 {
-/**
+/** 
 * ! trying to use map (not sure best practice or not)
+* ? using map cause i want to get list inside scrollview
 */
 /* <FlatList 
 nestedScrollEnabled
@@ -72,9 +73,9 @@ export default MainList
 const styles = StyleSheet.create({
     content:{
         backgroundColor:'red',
+        // backgroundColor:'grey',
         marginBottom:20,
         borderRadius:15,
-
     },
     heading:{
         textAlign:'center',
@@ -91,25 +92,31 @@ const styles = StyleSheet.create({
     },
     iconContainer:{
         flexDirection:'row',
-        justifyContent:'space-around',
+        // justifyContent:'space-around',
         alignItems:'center',
         marginBottom:5,
     },
     icon:{
+        flex:1,
         width:30,
         height:30,
     },
     iconName:{
         flexDirection:'row',
-        justifyContent:'space-evenly',
+        // justifyContent:'space-evenly',
         backgroundColor:'pink',
+        // backgroundColor:'grey',
         opacity:0.7,
         overflow:'hidden',
         borderBottomLeftRadius:5,
+        borderBottomLeftRadius: 10,
+        borderBottomRightRadius: 10,
     },
     Name:{
+        flex:1,
+        textAlign:'center',
         color:'white',
         padding:5,
-    }
+    },
 
 })

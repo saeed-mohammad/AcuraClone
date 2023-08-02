@@ -1,9 +1,7 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View,StatusBar } from 'react-native'
 import React from 'react'
 import Face from '../components/faceMatch/Face'
-/**
- * ! the icon only use Ionicons material
- */
+
 const FaceMatch = () => {
   return (
     <View style={styles.container}>
