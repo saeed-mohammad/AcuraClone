@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "676625403463",
+    "project_id": "andofirebase-33ad4",
+    "storage_bucket": "andofirebase-33ad4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676625403463:android:02a3095dfc66ddaeabeb62",
+        "android_client_info": {
+          "package_name": "com.acuraclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "676625403463-d5dausiv23ipreigt8nut80v7iuegnj6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9I6AVGju-fY849s6Vva0-aDX8WXHl3HQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "676625403463-d5dausiv23ipreigt8nut80v7iuegnj6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

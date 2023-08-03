@@ -1,11 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {  StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import Camera from '../components/IdCamera/Camera'
-
-
 const IdCamera = () => {
   return (
-    <View>
+    <View style={{flex:1}}>
       <Camera/>
     </View>
   )
@@ -13,4 +11,5 @@ const IdCamera = () => {
 
 export default IdCamera
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+})

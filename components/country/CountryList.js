@@ -37,7 +37,8 @@ const handleBtn=(e)=>{
 }
 const handleSearch=(query)=>{
   setSearchInp(query)
-  if(searchInp !== ''){
+  // filter...
+  if(searchInp){
     const formattedQuery=query.toLowerCase();
     const filterData=filter(countryName,(country)=>{
       if(country.name.toLowerCase().includes(formattedQuery)){

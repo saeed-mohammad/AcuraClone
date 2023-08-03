@@ -5,12 +5,14 @@ import IdCards from '../screens/IdCards';
 import FaceMatch from '../screens/FaceMatch';
 import FingerPrint from '../screens/FingerPrint';
 import IdCamera from '../screens/IdCamera';
+import Test from '../screens/Test';
 
 const Stack = createStackNavigator();
 
 export default function MyStack() {
   return (
     <Stack.Navigator initialRouteName='Home'>
+      <Stack.Screen name="Test" component={Test} options={{headerShown:true}}/>
       <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
       <Stack.Screen name="Country" component={Country} options={{headerShown:false}} />
       <Stack.Screen name="IdCards" component={IdCards} 
