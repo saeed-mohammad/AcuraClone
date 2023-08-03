@@ -1,8 +1,8 @@
-import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View ,PermissionsAndroid} from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View ,PermissionsAndroid, Image} from 'react-native'
 import React,{useState,useEffect} from 'react'
 import auth from '@react-native-firebase/auth';
 import messaging from '@react-native-firebase/messaging';
-
+import { GoogleSignin,statusCodes } from '@react-native-google-signin/google-signin';
 /**
  * 
  * ! for notification testing im using fcm test 
@@ -18,7 +18,38 @@ import messaging from '@react-native-firebase/messaging';
 const Test = () => {
     const [email,setemail]=useState('')
     const [password,setpassword]=useState('')
-
+    const [userInfo,setuserInfo]=useState(null)
+// google sign in...
+useEffect(()=>{
+  GoogleSignin.configure({webClientId:'676625403463-d5dausiv23ipreigt8nut80v7iuegnj6.apps.googleusercontent.com'})
+},[])
+// google sign in...
+const handlegooglesignIn=async()=>{
+  try {
+    await GoogleSignin.hasPlayServices();
+    const usrInfo = await GoogleSignin.signIn();
+    setuserInfo(usrInfo);
+  } catch (error) {
+    if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+      // user cancelled the login flow
+    } else if (error.code === statusCodes.IN_PROGRESS) {
+      // operation (e.g. sign in) is in progress already
+    } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+      // play services not available or outdated
+    } else {
+      // some other error happened
+    }
+  }
+}
+// google sign out...
+const handlegooglesignOut=async () => {
+  try {
+    await GoogleSignin.signOut();
+    setuserInfo(null);
+  } catch (error) {
+    console.error(error);
+  }
+};
 // for messaging using fcm testing...
   useEffect(()=>{
     // permission for notification
@@ -78,8 +109,8 @@ const Test = () => {
   return (
     <View style={{flex:1}}>
       
-      <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
-        <Text>Firebase authentication</Text>
+      <View  style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+        <Text style={{fontSize:20,color:'black'}}>Firebase authentication</Text>
 
         <TextInput style={styles.input} placeholder='enter Email' 
         value={email}
@@ -96,6 +127,24 @@ const Test = () => {
         <TouchableOpacity style={styles.btn} onPress={signIn}>
             <Text style={styles.btnTxt}>Sign In</Text>
         </TouchableOpacity>
+
+      {
+      (userInfo) && 
+      <View>
+        <Text>{userInfo.user.name}</Text>  
+        <Text>{userInfo.user.email}</Text>  
+        <Image style={{width:50,height:50}} source={{uri:userInfo.user.photo}}/>
+      </View>
+      }
+      {(!userInfo)?(
+        <TouchableOpacity style={styles.btn} onPress={handlegooglesignIn}>
+            <Text style={styles.btnTxt}>Google Sign-In</Text>
+        </TouchableOpacity>
+      ):(
+        <TouchableOpacity style={styles.btn} onPress={handlegooglesignOut}>
+            <Text style={styles.btnTxt}>Google Sign-out</Text>
+        </TouchableOpacity>
+      )}
       </View>
     </View>
   )

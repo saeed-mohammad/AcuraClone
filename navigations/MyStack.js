@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 
 export default function MyStack() {
   return (
-    <Stack.Navigator initialRouteName='Home'>
+    <Stack.Navigator initialRouteName='Test'>
       <Stack.Screen name="Test" component={Test} options={{headerShown:true}}/>
       <Stack.Screen name="Home" component={Home} options={{headerShown:false}}/>
       <Stack.Screen name="Country" component={Country} options={{headerShown:false}} />
